@@ -41,12 +41,49 @@ namespace FirstApi.Controllers
             return StatusCode(StatusCodes.Status200OK,products);
         }
 
+       
         [HttpPost]
         public IActionResult Create(Product product)
         {
             _appDbcontext.Products.Add(product);
             _appDbcontext.SaveChanges();
             return StatusCode(StatusCodes.Status201Created);
+        }
+
+        //[Route("{id}")]
+        [HttpPut]
+        public IActionResult Update(Product product)
+        {
+            var existProduct = _appDbcontext.Products.FirstOrDefault(p => p.Id == product.Id);
+            if (existProduct == null) return NotFound();
+            existProduct.Name = product.Name;
+            existProduct.SalePrice = product.SalePrice;
+            existProduct.CostPrice = product.CostPrice;
+            _appDbcontext.SaveChanges();
+            return NoContent();
+        }
+        [Route("{id}")]
+        [HttpDelete]
+        public IActionResult Delete(int id)
+        {
+            var existProduct = _appDbcontext.Products.FirstOrDefault(p => p.Id == id);
+            if (existProduct == null) return NotFound();
+            _appDbcontext.Products.Remove(existProduct);
+            _appDbcontext.SaveChanges();
+            return NoContent();
+
+        }
+
+        [Route("{id}")]
+        [HttpPatch]
+        public IActionResult Delete(int id, bool isDelete)
+        {
+            var existProduct = _appDbcontext.Products.FirstOrDefault(p => p.Id == id);
+            if (existProduct == null) return NotFound();
+            existProduct.IsDeleted = isDelete;
+            _appDbcontext.SaveChanges();
+            return NoContent();
+
         }
     }
 }

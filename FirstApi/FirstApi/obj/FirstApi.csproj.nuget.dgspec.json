@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Desktop\\Main\\At Lesson\\FirstApi\\FirstApi\\FirstApi.csproj": {}
+    "C:\\Users\\User\\Desktop\\Main\\At Lesson\\HWork 08.07.2023\\FirstApi\\FirstApi\\FirstApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Desktop\\Main\\At Lesson\\FirstApi\\FirstApi\\FirstApi.csproj": {
+    "C:\\Users\\User\\Desktop\\Main\\At Lesson\\HWork 08.07.2023\\FirstApi\\FirstApi\\FirstApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\Main\\At Lesson\\FirstApi\\FirstApi\\FirstApi.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\Main\\At Lesson\\HWork 08.07.2023\\FirstApi\\FirstApi\\FirstApi.csproj",
         "projectName": "FirstApi",
-        "projectPath": "C:\\Users\\User\\Desktop\\Main\\At Lesson\\FirstApi\\FirstApi\\FirstApi.csproj",
+        "projectPath": "C:\\Users\\User\\Desktop\\Main\\At Lesson\\HWork 08.07.2023\\FirstApi\\FirstApi\\FirstApi.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\Main\\At Lesson\\FirstApi\\FirstApi\\obj\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\Main\\At Lesson\\HWork 08.07.2023\\FirstApi\\FirstApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.0, )"
