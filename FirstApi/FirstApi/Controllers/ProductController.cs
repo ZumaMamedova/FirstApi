@@ -1,7 +1,9 @@
 ﻿using FirstApi.DAL;
+using FirstApi.Dtos.Product;
 using FirstApi.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Xml.Linq;
 
 namespace FirstApi.Controllers
 {
@@ -29,23 +31,52 @@ namespace FirstApi.Controllers
         {
             var product =_appDbcontext.Products.FirstOrDefault(p=>p.Id==id&& p.IsDeleted);
             if (product == null) return NotFound();
+            var returnProduct = new ProductReturnDto
+            {
+                Name = product.Name,
+                SalePrice = product.SalePrice,
+                CostPrice = product.CostPrice,
+                IsDeleted = product.IsDeleted
+            };
            
-            return StatusCode(200,product);
+            return StatusCode(200,returnProduct);
         }
         
        
         [HttpGet]//api
         public IActionResult GetAll()
         {
-            var products=_appDbcontext.Products.Where(p=>p.IsDeleted).ToList();
-            return StatusCode(StatusCodes.Status200OK,products);
+            var query = _appDbcontext.Products.Where(p => !p.IsDeleted);
+            var itemList=new List<ProductListItemDto>();
+            foreach (var item in query.ToList())
+            {
+                ProductListItemDto productListItemDto = new()
+                {
+                    Name = item.Name,
+                    CostPrice = item.CostPrice,
+                    SalePrice = item.SalePrice,
+                };
+                itemList.Add(productListItemDto);
+            }
+            var productsListDto = new ProductListDto
+            {
+                TotalCount = itemList.Count,
+                Items = itemList,
+            };
+          
+            
+            return StatusCode(StatusCodes.Status200OK,productsListDto);
         }
 
        
         [HttpPost]
-        public IActionResult Create(Product product)
+        public IActionResult Create(ProductCreateDto productCreateDto)
         {
-            _appDbcontext.Products.Add(product);
+            var newProduct=new Product();
+            newProduct.Name = productCreateDto.Name;
+            newProduct.SalePrice = productCreateDto.SalePrice;
+            newProduct.CostPrice = productCreateDto.CostPrice;
+            _appDbcontext.Products.Add(newProduct);
             _appDbcontext.SaveChanges();
             return StatusCode(StatusCodes.Status201Created);
         }
