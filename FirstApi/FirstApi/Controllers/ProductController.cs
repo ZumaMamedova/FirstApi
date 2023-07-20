@@ -36,7 +36,8 @@ namespace FirstApi.Controllers
                 Name = product.Name,
                 SalePrice = product.SalePrice,
                 CostPrice = product.CostPrice,
-                IsDeleted = product.IsDeleted
+                IsDeleted = product.IsDeleted,
+                CategoryName = product.Category.Name
             };
            
             return StatusCode(200,returnProduct);
@@ -76,6 +77,7 @@ namespace FirstApi.Controllers
             newProduct.Name = productCreateDto.Name;
             newProduct.SalePrice = productCreateDto.SalePrice;
             newProduct.CostPrice = productCreateDto.CostPrice;
+            newProduct.CategoryId = productCreateDto.CategoryId;
             _appDbcontext.Products.Add(newProduct);
             _appDbcontext.SaveChanges();
             return StatusCode(StatusCodes.Status201Created);
@@ -90,6 +92,7 @@ namespace FirstApi.Controllers
             existProduct.Name = product.Name;
             existProduct.SalePrice = product.SalePrice;
             existProduct.CostPrice = product.CostPrice;
+            existProduct.CategoryId = product.CategoryId;
             _appDbcontext.SaveChanges();
             return NoContent();
         }

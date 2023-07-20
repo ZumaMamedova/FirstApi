@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "AMRTpv8bgR+APfTQS9xwTmafVXYRirl7wkPbLj50OgI=",
+  "Hash": "+Pr38M05voKgU9rA1bTVfUb+5TaLHX2IVQEI2faSFek=",
   "Source": "FirstApi",
   "BasePath": "_content/FirstApi",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "FirstApi\\wwwroot",
+      "Source": "FirstApi",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\Main\\At Lesson\\HWork 08.07.2023\\FirstApi\\FirstApi\\wwwroot\\",
+      "BasePath": "_content/FirstApi",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }

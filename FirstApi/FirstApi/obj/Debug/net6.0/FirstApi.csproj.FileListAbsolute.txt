@@ -131,3 +131,4 @@ C:\Users\User\Desktop\Main\At Lesson\HWork 08.07.2023\FirstApi\FirstApi\obj\Debu
 C:\Users\User\Desktop\Main\At Lesson\HWork 08.07.2023\FirstApi\FirstApi\bin\Debug\net6.0\FluentValidation.dll
 C:\Users\User\Desktop\Main\At Lesson\HWork 08.07.2023\FirstApi\FirstApi\bin\Debug\net6.0\FluentValidation.AspNetCore.dll
 C:\Users\User\Desktop\Main\At Lesson\HWork 08.07.2023\FirstApi\FirstApi\bin\Debug\net6.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\User\Desktop\Main\At Lesson\HWork 08.07.2023\FirstApi\FirstApi\bin\Debug\net6.0\FirstApi.staticwebassets.runtime.json
