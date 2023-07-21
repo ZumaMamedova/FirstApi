@@ -3,6 +3,7 @@ using FirstApi.Dtos.Product;
 using FirstApi.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Xml.Linq;
 
 namespace FirstApi.Controllers
@@ -29,7 +30,10 @@ namespace FirstApi.Controllers
         [HttpGet]
          public IActionResult Get(int id)
         {
-            var product =_appDbcontext.Products.FirstOrDefault(p=>p.Id==id&& p.IsDeleted);
+            var product =_appDbcontext.Products
+                .Include(c=>c.Category)
+                .ThenInclude(c=>c.Products)
+                .FirstOrDefault(p=>p.Id==id&& ! p.IsDeleted);
             if (product == null) return NotFound();
             var returnProduct = new ProductReturnDto
             {
@@ -37,7 +41,12 @@ namespace FirstApi.Controllers
                 SalePrice = product.SalePrice,
                 CostPrice = product.CostPrice,
                 IsDeleted = product.IsDeleted,
-                CategoryName = product.Category.Name
+                Category=new CategoryInProductDto
+                {
+                    Name=product.Category.Name,
+                    ImageUrl=product.Category.ImageUrl,
+                    ProductCount=product.Category.Products.Count,
+                }
             };
            
             return StatusCode(200,returnProduct);
